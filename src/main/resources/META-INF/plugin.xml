@@ -33,7 +33,21 @@
 		        description="Useless description">
 			<add-to-group group-id="ToolsMenu" anchor="first"/>
 		</action>
+
+		<action id="MyPlugin.NewFileSearchFilter" class="it.simonecelia.NewFileSearchFilter" text="New Search Filter"/>
+
+
+		<group id="MyPlugin.FindGroup" text="Find" description="Find actions">
+			<add-to-group group-id="EditMenu" anchor="before" />
+			<action id="MyPlugin.MyFindInFileAction" class="it.simonecelia.nosearch4import.actions.MyFindInFileAction" text="Find in File" description="Find in File"/>
+		</group>
 	</actions>
+
+	<extensions defaultExtensionNs="com.intellij">
+		<findManagerListener implementation="com.yourpackage.MyFindInFileListener"/>
+	</extensions>
+
+
 
 
 </idea-plugin>
