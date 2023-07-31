@@ -23,29 +23,32 @@
 
 	<!-- Extension points defined by the plugin.
 		 Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
-	<extensions defaultExtensionNs="com.intellij">
-
-	</extensions>
-
-
+<!--	<extensions defaultExtensionNs="com.intellij">-->
+<!--		<findUsagesProvider implementation="com.example.ExcludeJavaImportFindUsagesProvider"/>-->
+<!--	</extensions>-->
 	<actions>
-		<action id="it.simonecelia.nosearch4import.actions.PopupDialogAction" class="it.simonecelia.nosearch4import.actions.PopupDialogAction" text="Pop Dialog Action"
-		        description="Useless description">
-			<add-to-group group-id="ToolsMenu" anchor="first"/>
-		</action>
-
-		<action id="MyPlugin.NewFileSearchFilter" class="it.simonecelia.NewFileSearchFilter" text="New Search Filter"/>
-
-
-		<group id="MyPlugin.FindGroup" text="Find" description="Find actions">
-			<add-to-group group-id="EditMenu" anchor="before" />
-			<action id="MyPlugin.MyFindInFileAction" class="it.simonecelia.nosearch4import.actions.MyFindInFileAction" text="Find in File" description="Find in File"/>
-		</group>
+		<action id="ExcludeJavaImportAction" class="com.example.ExcludeJavaImportAction" text="Exclude Java Imports" description="Exclude Java imports from search results."/>
+		<!-- Altre azioni... -->
 	</actions>
 
-	<extensions defaultExtensionNs="com.intellij">
-		<findManagerListener implementation="com.yourpackage.MyFindInFileListener"/>
-	</extensions>
+<!--	<actions>-->
+<!--		<action id="it.simonecelia.nosearch4import.actions.PopupDialogAction" class="it.simonecelia.nosearch4import.actions.PopupDialogAction" text="Pop Dialog Action"-->
+<!--		        description="Useless description">-->
+<!--			<add-to-group group-id="ToolsMenu" anchor="first"/>-->
+<!--		</action>-->
+
+<!--		<action id="MyPlugin.NewFileSearchFilter" class="it.simonecelia.NewFileSearchFilter" text="New Search Filter"/>-->
+
+
+<!--		<group id="MyPlugin.FindGroup" text="Find" description="Find actions">-->
+<!--			<add-to-group group-id="EditMenu" anchor="before" />-->
+<!--			<action id="MyPlugin.MyFindInFileAction" class="it.simonecelia.nosearch4import.actions.MyFindInFileAction" text="Find in File" description="Find in File"/>-->
+<!--		</group>-->
+<!--	</actions>-->
+
+<!--	<extensions defaultExtensionNs="com.intellij">-->
+<!--		<findManagerListener implementation="com.yourpackage.MyFindInFileListener"/>-->
+<!--	</extensions>-->
 
 
 
