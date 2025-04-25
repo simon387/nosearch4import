@@ -3,54 +3,32 @@
 	<!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
 	<id>it.simonecelia.nosearch4import</id>
 
-	<!-- Public plugin name should be written in Title Case.
-		 Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+	<!-- Public plugin name should be written in Title Case. -->
 	<name>Nosearch4import</name>
 
 	<!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
 	<vendor email="simone.celia@simonecelia.it" url="https://www.simonecelia.it">SimoneCelia</vendor>
 
-	<!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
-		 Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
-		 Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+	<!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager. -->
 	<description><![CDATA[
-   Ciao sto facendo un plug in e non ho idea di perchè lo abbiano fatto così complicato
-  ]]></description>
+        La AI fa cagare a sviluppare plugin per IntelliJ
+    ]]></description>
 
-	<!-- Product and plugin compatibility requirements.
-		 Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+	<!-- Product and plugin compatibility requirements. -->
 	<depends>com.intellij.modules.platform</depends>
 
-	<!-- Extension points defined by the plugin.
-		 Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
-<!--	<extensions defaultExtensionNs="com.intellij">-->
-<!--		<findUsagesProvider implementation="com.example.ExcludeJavaImportFindUsagesProvider"/>-->
-<!--	</extensions>-->
-	<actions>
-		<action id="ExcludeJavaImportAction" class="com.example.ExcludeJavaImportAction" text="Exclude Java Imports" description="Exclude Java imports from search results."/>
-		<!-- Altre azioni... -->
-	</actions>
+	<!-- Extension points defined by the plugin. -->
+	<extensions defaultExtensionNs="com.intellij">
+		<applicationService serviceInterface="com.intellij.psi.search.SearchScopeProvider"
+		                    serviceImplementation="it.simonecelia.nosearch4import.scopes.ExceptImportScopeProvider"/>
+	</extensions>
 
-<!--	<actions>-->
-<!--		<action id="it.simonecelia.nosearch4import.actions.PopupDialogAction" class="it.simonecelia.nosearch4import.actions.PopupDialogAction" text="Pop Dialog Action"-->
-<!--		        description="Useless description">-->
-<!--			<add-to-group group-id="ToolsMenu" anchor="first"/>-->
-<!--		</action>-->
+	<extensions defaultExtensionNs="com.intellij">
+		<search.scopeProvider implementation="it.simonecelia.nosearch4import.scopes.ExceptImportScopeProvider"/>
+	</extensions>
 
-<!--		<action id="MyPlugin.NewFileSearchFilter" class="it.simonecelia.NewFileSearchFilter" text="New Search Filter"/>-->
-
-
-<!--		<group id="MyPlugin.FindGroup" text="Find" description="Find actions">-->
-<!--			<add-to-group group-id="EditMenu" anchor="before" />-->
-<!--			<action id="MyPlugin.MyFindInFileAction" class="it.simonecelia.nosearch4import.actions.MyFindInFileAction" text="Find in File" description="Find in File"/>-->
-<!--		</group>-->
-<!--	</actions>-->
-
-<!--	<extensions defaultExtensionNs="com.intellij">-->
-<!--		<findManagerListener implementation="com.yourpackage.MyFindInFileListener"/>-->
-<!--	</extensions>-->
-
-
-
-
+	<applicationListeners>
+		<listener class="it.simonecelia.nosearch4import.listeners.PluginStartupListener"
+		          topic="com.intellij.ide.AppLifecycleListener"/>
+	</applicationListeners>
 </idea-plugin>

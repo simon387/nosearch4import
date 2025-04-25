@@ -13,10 +13,10 @@ repositories {
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    version.set("2021.3.3")
+    version.set("2021.3.3") // Mantieni la versione già configurata
     type.set("IC") // Target IDE Platform
 
-    plugins.set(listOf(/* Plugin Dependencies */))
+    plugins.set(listOf("java")) // Aggiungi il modulo Java
 }
 
 tasks {
