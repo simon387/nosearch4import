@@ -1,34 +1,13 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-	<!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
 	<id>it.simonecelia.nosearch4import</id>
-
-	<!-- Public plugin name should be written in Title Case. -->
 	<name>Nosearch4import</name>
-
-	<!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
 	<vendor email="simone.celia@simonecelia.it" url="https://www.simonecelia.it">SimoneCelia</vendor>
-
-	<!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager. -->
 	<description><![CDATA[
         La AI fa cagare a sviluppare plugin per IntelliJ
     ]]></description>
-
-	<!-- Product and plugin compatibility requirements. -->
 	<depends>com.intellij.modules.platform</depends>
-
-	<!-- Extension points defined by the plugin. -->
+	<!-- Nessuna extension custom qui -->
 	<extensions defaultExtensionNs="com.intellij">
-		<applicationService serviceInterface="com.intellij.psi.search.SearchScopeProvider"
-		                    serviceImplementation="it.simonecelia.nosearch4import.scopes.ExceptImportScopeProvider"/>
+		<usageFilteringRule implementation="it.simonecelia.nosearch4import.filters.ExceptImportUsageFilter"/>
 	</extensions>
-
-	<extensions defaultExtensionNs="com.intellij">
-		<search.scopeProvider implementation="it.simonecelia.nosearch4import.scopes.ExceptImportScopeProvider"/>
-	</extensions>
-
-	<applicationListeners>
-		<listener class="it.simonecelia.nosearch4import.listeners.PluginStartupListener"
-		          topic="com.intellij.ide.AppLifecycleListener"/>
-	</applicationListeners>
 </idea-plugin>
